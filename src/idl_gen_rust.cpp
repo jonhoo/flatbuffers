@@ -406,7 +406,8 @@ class RustGenerator : public BaseGenerator {
     // example: f(A, D::E)          -> super::D::E
     // does not include leaf object (typically a struct type).
 
-    size_t i = 0;
+    // fix unused but set variable warning
+    //size_t i = 0;
     std::stringstream stream;
 
     auto s = src->components.begin();
@@ -417,7 +418,7 @@ class RustGenerator : public BaseGenerator {
       if (*s != *d) { break; }
       ++s;
       ++d;
-      ++i;
+      //++i;
     }
 
     for (; s != src->components.end(); ++s) { stream << "super::"; }
